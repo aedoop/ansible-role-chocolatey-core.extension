@@ -1,0 +1,10 @@
+---
+# tasks file for chocolatey-core.extension
+
+- name: Set dir_info,pkg_info fact in {{ ansible_distribution }} by {{ chocolatey_core_extension_install_type }} install
+  set_fact:
+    dir_info: "{{ chocolatey_core_extension_dirs[ansible_os_family] }}"
+    pkg_info: "{{ chocolatey_core_extension_packages[chocolatey_core_extension_version][ansible_os_family] }}"
+
+- name: Include Windows-{{ chocolatey_core_extension_install_type }}.yml in {{ ansible_distribution }} by {{ chocolatey_core_extension_install_type }} install
+  include: Window-{{ chocolatey_core_extension_install_type }}.yml
